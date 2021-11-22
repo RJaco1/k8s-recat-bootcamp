@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: postgres
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: postgres
   ports:
     - port: 5432
-      nodePort: 30000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -92,5 +91,5 @@ kind: Secret
 metadata:
   name: db-secret
 data:
-  password: YWRtaW4K
+  password: YWRtaW4gLW4K
 type: Opaque

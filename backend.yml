@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: backend
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: backend
   ports:
     - port: 3800
-      nodePort: 30800
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -25,7 +24,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: rj0510/back-end:0.2.0
+          image: rj0510/back-end:0.3.0
           env:
             - name: POSTGRE_PASS
               valueFrom:
